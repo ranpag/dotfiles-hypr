@@ -19,3 +19,7 @@ fish
 wpctl
 brightnessctl
 playerctl
+
+noto-fonts-cjk
+ttf-jetbrains-mono-nerd
+noto-fonts-emoji
