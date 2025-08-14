@@ -1,0 +1,10 @@
+(defwidget sparkle []
+    (box
+        :orientation "h" 
+        :halign "start"
+        :valign "center"
+        :space-evenly false
+        :spacing 15
+        (label :text "")
+    )
+)
