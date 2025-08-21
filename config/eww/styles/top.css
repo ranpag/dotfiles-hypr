@@ -1,0 +1,234 @@
+* {
+  font-family: JetBrainsMono Nerd Font, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* DARK MODE, girl.png WALLPAPER */
+
+.top {
+  background-color: transparent;
+  padding: 0 7.5px;
+  padding-top: 5px;
+  padding-bottom: 2px;
+}
+
+.container {
+  background-color: #11131a; /* surface */
+  border-radius: 12px;
+  padding: 5px 8px;
+  box-shadow: 2px -2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.tooltip {
+  color: #e1e2eb;
+}
+
+/* TOP LEFT CONTAINER START */
+.sparkle-box {
+  background-color: #363940; /* surface_bright */
+  border-radius: 50px;
+  padding-left: 10px;
+  padding-bottom: 5px;
+  padding-right: 15px;
+  padding-top: 5px;
+}
+
+.sparkle {
+  color: #c2c6d5; /* on_surface_variant */
+  font-size: 20px;
+}
+
+.current-workspace {
+  font-size: 20px;
+  font-weight: bolder;
+  color: #e1e2eb; /* on_surface */
+}
+
+.current-window {
+  color: #e1e2eb; /* on_surface */
+}
+
+.clients-box {
+  background-color: #363940; /* surface_bright */
+  border-radius: 99px;
+  padding: 2px 3px;
+}
+
+.active-workspace {
+  background-color: #c4c5d5; /* color0 */
+}
+
+.client-icon {
+  border-radius: 99px;
+  background-repeat: no-repeat;
+  background-clip: content-box;
+  background-size: cover;
+  background-color: #1d2026; /* surface_container */
+}
+
+.dot {
+  font-size: 16px;
+}
+/* TOP LEFT CONTAINER END */
+
+/* TOP CENTER CONTAINER START */
+.player-image-box {
+  border-radius: 8px;
+  background-repeat: no-repeat;
+  background-clip: content-box;
+  background-size: cover;
+}
+
+.player-play-pause {
+  font-size: 18px;
+  color: rgba(240, 255, 255, 0.8);
+}
+
+.player-artist {
+  font-size: 15px;
+  font-weight: 800;
+  color: #e1e2eb; /* on_surface */
+}
+
+.player-title {
+  color: #e1e2eb; /* on_surface */
+}
+
+.time {
+  font-size: 18px;
+  font-weight: 800;
+  color: #e1e2eb; /* on_surface */
+}
+
+.today {
+  font-size: 15px;
+  font-weight: 600;
+  color: #e1e2eb; /* on_surface */
+}
+
+.temperature {
+  font-weight: 500;
+  color: #e1e2eb; /* on_surface */
+}
+
+.weather-icon {
+  font-size: 19px;
+  font-weight: 700;
+  color: #e1e2eb; /* on_surface */
+}
+
+.weather-desc {
+  font-size: 12px;
+  font-weight: 500;
+  color: #e1e2eb; /* on_surface */
+}
+
+.battery-box {
+  background-color: #363940; /* surface_bright */
+  border-radius: 99px;
+  padding: 0 3px;
+}
+
+.power-mode-icon {
+  color: #c2c6d5; /* on_surface_variant */
+}
+
+.circle {
+  background-color: rgba(84, 81, 82, 0.8);
+}
+
+.battery-icon {
+  font-size: 10.5px;
+  color: #c2c6d5; /* on_surface_variant */
+}
+/* TOP CENTER CONTAINER END */
+
+/* TOP RIGHT CONTAINER START */
+.utility-box,
+.connection-box {
+  padding-left: 10px;
+  padding-bottom: 5px;
+  padding-right: 15px;
+  padding-top: 5px;
+}
+
+.utility,
+.connection {
+  color: #e1e2eb; /* on_surface */
+  font-size: 18px;
+}
+
+.clipboard {
+  color: #8be9fd; /* color6_source */
+}
+
+.emoji-selector {
+  color: #ffff99; /* color11_source */
+}
+
+.idle-inactive {
+  color: #44475a; /* color8_source */
+}
+
+.idle-active {
+  color: #c2b3ff; /* color12_container */
+}
+
+.power-button {
+  color: #ff5555; /* color1_source */
+}
+
+.connection-text {
+  color: #e1e2eb; /* on_surface */
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.bluetooth-box {
+  padding-right: 12px;
+}
+
+.notif-box {
+  padding-right: 14px;
+}
+/* TOP RIGHT CONTAINER END */
+
+/* .sys-container,
+.audio-container {
+  background-color: rgba(152, 184, 170, 1);
+  border-radius: 50px;
+  padding: 2px 6px;
+}
+
+.cpu-icon {
+  font-size: 11px;
+  margin-left: -2px;
+}
+.memory-icon {
+  font-size: 11px;
+}
+.temperature-icon {
+  font-size: 11.5px;
+}
+
+.update-icon {
+  font-size: 10.5px;
+  margin-left: -3px;
+}
+.brightness-icon {
+  font-size: 11.5px;
+  margin-left: -4px;
+}
+.sound-icon {
+  font-size: 13px;
+  margin-left: -2px;
+}
+.mic-icon {
+  font-size: 11.5px;
+}
+
+.muted-text {
+  text-decoration: line-through;
+  color: #6d404d;
+} */

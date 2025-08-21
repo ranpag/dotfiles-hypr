@@ -1,0 +1,59 @@
+; CONST
+(defvar wallpaper "~/Pictures/Wallpaper/girl.png")
+; (deflisten loading_icon
+;   "bash -c '
+;     frames=(⠋ ⠙ ⠹ ⠸ ⠼ ⠴ ⠦ ⠧ ⠇ ⠏)
+;     while :; do
+;       for f in \"\$\{frames\[@\]\}\"; do
+;         echo \"$f\"
+;         sleep 0.1
+;       done
+;     done
+;   '"
+; )
+
+; SYSTEM INFO
+(defpoll netinfo
+  :interval "3s"
+  `scripts/_eww_netinfo.sh`
+)
+(defpoll pacman-update 
+  :initial '{"percent": 0, "total_updates": 0}'
+  :interval "3600s"
+  `scripts/_eww_update.sh`)
+(defpoll volume
+  :initial '{"mic": 0, "audio": 0, "audio_icon": "󰕾", "mic_icon": "", "audio_mute": false, "mic_mute": false, "output_type": "audio"}'
+  :interval "5s"
+  `scripts/_eww_volume.sh`)
+(defpoll brightness
+  :interval "5s"
+  `scripts/_eww_brightness.sh`)
+(defpoll date
+  :interval "10s"
+  `date '+%A, %d/%m'`)
+(defpoll battery
+  :initial '{"bat_icon": "󰂂", "mode_icon": "󱐋", "percentage": 0, "state": "", "time_to_full": "", "mode": ""}'
+  :interval "2s"
+  `scripts/_eww_power.sh`)
+(defpoll weather
+  :initial '{"isloading": true}'
+  :interval "1800s"
+  `scripts/_eww_weather.sh`
+)
+(deflisten player-metadata `~/.config/eww/scripts/_eww_player.sh`)
+
+
+; HYPRLAND INFO
+(deflisten focused_window_ws
+  :initial "{\"current_workspace\": \"1\", \"focused_window_title\": \"No window focused\"}"
+  `scripts/_eww_hyprevent.sh`
+)
+
+(defvar workspaces '[{"id": "1", "name": "1", "clients": []}]')
+
+; TOGGLE VAR
+(defvar show_menu false)
+(defvar show_sidebar false)
+(defvar show_control_center false)
+(defvar show_utility false)
+(defvar show_play_pause false)

@@ -1,0 +1,49 @@
+(defwidget date-time [date weather]
+    (box
+        :orientation "h" 
+        :class "container date-container"
+        :space-evenly false
+        :spacing 8
+        (box
+            :orientation "v" 
+            :class "date-box"
+            :halign "start"
+            :space-evenly true
+            (label :class "time" :text "${formattime(EWW_TIME, '%H:%M')}" :xalign 0)
+            (label :class "today" :text "${date}" :xalign 0)
+        )
+        (box
+            :orientation "v" 
+            :class ""
+            :halign "start"
+            :space-evenly false
+            :spacing 4
+            (box
+                :orientation "h" 
+                :space-evenly true
+                (label :class "temperature" :text "${round(weather?.current?.temperature_2m, 0) ?: '-'}${weather?.current_units?.temperature_2m ?: '°C'}" :xalign 0.2 :yalign 0.5)
+                (label :class "weather-icon" :text "${weather.current.weather_alt.icon}" :xalign 0.7 :yalign 0.5)
+            )
+            (label :class "weather-desc" :text "${weather.current.weather_alt.desc}" :xalign 0.5)
+        )
+        (tooltip
+            (label :class "tooltip" :text "${battery.bat_icon} ${battery.percentage}% | State: ${replace(battery.state, '[-]', ' ')} | Time to Full: ${battery.time_to_full} | Mode: ${battery.mode} ${battery.mode_icon}")
+            (box 
+                :orientation "v"
+                :class "battery-box"
+                :space-evenly true
+                (label :class "power-mode-icon" :text "${battery.mode_icon} " :xalign 1)
+                (circular-progress
+                    :class "circle battery-icon"
+                    :start-at 75
+                    :value {battery.percentage}
+                    :thickness 1.5
+                    :clockwise true
+                    :width 18
+                    :height 18
+                    (label :class "circle-icon battery-icon" :text "${battery.bat_icon}")
+                )
+            ) 
+        )     
+    )
+)

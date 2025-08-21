@@ -1,0 +1,181 @@
+(include "./variables.yuck")
+(include "./modules/control.yuck")
+(include "./modules/date-time.yuck")
+(include "./modules/embed.yuck")
+(include "./modules/hyprland.yuck")
+(include "./modules/menu.yuck")
+(include "./modules/player.yuck")
+(include "./modules/sys.yuck")
+
+(defwidget top-left []
+  (box
+    :orientation "h"
+    :class "top-left-container"
+    :halign "start"
+    :space-evenly false
+    :spacing 8
+    (current_window_ws :current {focused_window_ws})
+    (workspaces :workspaces {workspaces} :current {focused_window_ws})
+  )
+)
+
+(defwidget top-center []
+  (box
+    :orientation "h" 
+    :class "top-center-container"
+    :space-evenly false
+    :spacing 8
+    (mini-player :metadata {player-metadata} :show_play_pause {show_play_pause})
+    (date-time :date {date} :weather {weather})
+  )
+)
+
+
+(defwidget top-right []
+  (box
+    :orientation "h" 
+    :class "top-right-container"
+    :space-evenly true
+    (box
+      :orientation "h" 
+      :class "container"
+      :halign "start"
+      :valign "start"
+      :space-evenly false
+      :style "margin-left: 8px"
+      (eventbox
+        :onhover "eww update show_utility=true"
+        :onhoverlost "eww update show_utility=false"
+        (box
+          :orientation "h" 
+          :class "utility-box"
+          :halign "end"
+          :space-evenly false
+          (label :class "utility" :text "" :xalign 1)
+        )
+      )
+      (revealer
+        :transition "slideright"
+        :reveal {show_utility}
+        (eventbox
+          :onhover "eww update show_utility=true"
+          :onhoverlost "eww update show_utility=false"
+          (box
+            :orientation "h" 
+            :class "utility-box"
+            :halign "end"
+            :space-evenly false
+            :spacing 8
+            (tooltip
+              (label :class "tooltip" :text "Clipboard")
+              (label :class "utility clipboard" :text " " :xalign 1)
+            )
+            (tooltip
+              (label :class "tooltip" :text "Emoji Picker")
+              (label :class "utility emoji-selector" :text "󰞅 " :xalign 1)
+            )
+            (tooltip
+              (label :class "tooltip" :text "Screen Capture")
+              (label :class "utility screen-capture" :text " " :xalign 1)
+            )
+            (tooltip
+              (label :class "tooltip" :text "Idle Inhibior")
+              (label :class "utility idle-inactive" :text " " :xalign 1)
+            )
+            (tooltip
+              (label :class "tooltip" :text "Power Button")
+              (label :class "utility power-button" :text "" :xalign 1)
+            )
+          )
+        )
+      )
+      (systray
+        :class "tray" 
+        :orientation "h"
+        :space-evenly false
+        :spacing 5
+        :visible {!show_utility}
+        :icon-size 24
+      )
+    )
+    (box
+      :orientation "h" 
+      :class "container"
+      :halign "end"
+      :valign "start"
+      :space-evenly false
+      :spacing 1
+      (box
+        :orientation "h" 
+        :class "connection-box"
+        :space-evenly false
+        :spacing 5
+        (label :visible {netinfo.wifi_state == "connected"} :class "connection-text" :text "${netinfo.ssid}" :xalign 1 :limit-width 7)
+        (label :class "connection" :text "${netinfo.wifi_icon}" :xalign 1)
+      )
+      (box
+        :orientation "h" 
+        :class "connection-box bluetooth-box"
+        :space-evenly false
+        :spacing 5
+        (label :visible {netinfo.is_bluetooth_connected} :class "connection-text" :text "${netinfo.connected_device}" :xalign 1 :limit-width 7)
+        (label :class "connection" :text "${netinfo?.bluetooth_icon ?: ''}" :xalign 1)
+      )
+      (box
+        :orientation "h" 
+        :class "connection-box link-box"
+        :visible {netinfo.is_tethering_active}
+        (label :class "connection" :text " " :xalign 1)
+      )
+      (box
+        :orientation "h" 
+        :class "connection-box notif-box"
+        (label :class "connection" :text "" :xalign 1)
+      )
+    )
+  )
+)
+
+;; DEFWINDOW
+
+(defwindow top
+  :monitor 0
+  :geometry (geometry
+    :x "0"
+    :y "0"
+    :width "100%"
+    :height "3.2%"
+    :anchor "top center"
+  )
+  :stacking "fg"
+  :exclusive true
+  (centerbox
+    :orientation "h" 
+    :class "top-container"
+    (top-left)
+    (top-center)
+    (top-right)
+  )
+)
+
+(defwindow left
+  :monitor 0
+  :geometry (geometry
+    :x "8"
+    :y "0"
+    :width "2.5%"
+    :height "92.5%"
+    :anchor "left center"
+  )
+  :stacking "fg"
+  :exclusive true
+  (centerbox
+    :orientation "h" 
+    :class "left-container"
+    (label :text " ")
+    (label :text " ")
+    (label :text " ")
+  )
+)
+
+

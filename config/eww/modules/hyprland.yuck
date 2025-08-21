@@ -1,0 +1,66 @@
+(defwidget current_window_ws [current]
+    (box
+        :orientation "h" 
+        :class "container"
+        :halign "start"
+        :space-evenly false
+        :spacing 8
+        (box
+            :class "sparkle-box"
+            :halign "start"
+            :valign "center"
+            (label :class "sparkle" :text "" :xalign 0)
+        )
+        (box
+            :orientation "v" 
+            :class ""
+            :halign "start"
+            :space-evenly false
+            (label :class "current-workspace" :text "Workspace ${current.current_workspace}" :xalign 0 :limit-width 18)
+            (label :class "current-window" :text "~ ${current.focused_window_title ?: ''}" :xalign 0 :limit-width 25)
+        )
+    )
+)
+
+(defwidget workspaces [workspaces current]
+    (box
+        :orientation "h" 
+        :class "container"
+        :halign "start"
+        :valign "start"
+        :space-evenly false
+        (for workspace in workspaces
+            (box
+                :orientation "h" 
+                :class "clients-box ${current.current_workspace == workspace.name || current.current_workspace == workspace.id ? 'active-workspace' : ''}"
+                :halign "start"
+                :valign "center"
+                :space-evenly false
+                :spacing 2
+                (box
+                    :visible {arraylength(workspace.clients) > 0}
+                    (for client in {workspace.clients}
+                        (eventbox
+                            :onclick "hyprctl -q dispatch focuswindow pid:${client.pid}"
+                            (tooltip
+                                (label :class "tooltip" :text "${client.class} | ${client.title}")
+                                (box
+                                    :class "client-icon"
+                                    :style "background-image: url('${client.iconPath}');"
+                                    :width 22
+                                    :height 22
+                                )
+                            )
+                        )
+                    )
+                )
+                (box
+                    :visible {arraylength(workspace.clients) == 0} 
+                    :width 22
+                    :height 22
+                    (label :class "dot" :text "" :xalign 0.25)
+                )
+            )
+        )
+    )
+)

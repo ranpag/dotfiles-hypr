@@ -1,0 +1,56 @@
+@import "./styles/top.css";
+
+* {
+  font-family: JetBrainsMono Nerd Font, sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #0d2b21;
+}
+
+button {
+  background-color: transparent;
+}
+
+/* DEFWINDOW */
+.wallpaper {
+  border-radius: 5px 0 0 0;
+  border-top: 3px solid aliceblue;
+  border-left: 3px solid aliceblue;
+}
+
+.left {
+  background-color: rgba(30, 30, 30, 0.35);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.left-container {
+  padding: 15px 0;
+}
+
+.corner-image {
+  color: #476459;
+}
+
+.utility-container {
+  background-color: rgba(240, 248, 255, 0.5);
+  border-radius: 50px;
+  padding-bottom: 7px;
+}
+
+.tray-container {
+  padding-top: 8px;
+}
+
+.utility-container-reveal {
+  background-color: rgba(240, 248, 255, 0.5);
+  padding-top: 7px;
+}
+
+.utility-icon {
+  font-size: 22px;
+}
+
+.power-icon {
+  color: red;
+}

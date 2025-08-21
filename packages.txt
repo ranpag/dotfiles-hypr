@@ -16,6 +16,7 @@ pcmanfm-qt
 foot
 qt6ct
 kvantum
+eww
 
 fish
 fontconfig

@@ -1,0 +1,21 @@
+(defwindow menu 
+    :monitor 0
+    :geometry (geometry
+        :x "0"
+        :y "0"
+        :anchor "top center"
+    )
+    :stacking "overlay"
+    (revealer
+        :reveal {show_menu}
+        :transition "slideup"
+        :duration "200ms"
+        (eventbox
+            :onhover "eww update show_menu=true"
+            :onhoverlost "eww update show_menu=false"
+            (image :path "${wallpaper}"
+            :image-width 480
+            :image-height 270)
+        )
+    ) 
+)

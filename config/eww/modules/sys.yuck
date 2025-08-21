@@ -1,0 +1,142 @@
+(defwidget sys [cpu memory battery temperature]
+  (box 
+    :orientation "h" 
+    :class "sys-container" 
+    :halign "center"
+    :valign "center"
+    :space-evenly false
+    :spacing 15
+
+    ;; Battery Content
+    (box :orientation "h" :class "battery-container" :space-evenly false :spacing 7
+      (label :text "${battery.mode_icon}" :xalign 0)
+      (circular-progress
+        :class "circle battery-icon"
+        :start-at 75
+        :value {battery.percentage}
+        :thickness 2.5
+        :clockwise true
+        :width 22
+        :height 22
+        (label :class "circle-icon battery-icon" :text "${battery.bat_icon}")
+      )
+      (label :class "battery-text" :text "${battery.percentage}%")
+    )
+
+    ;; Temperature Content
+    (box :orientation "h" :class "temperature-container" :space-evenly false :spacing 7
+      (circular-progress
+        :class "circle temperature-icon"
+        :start-at 75
+        :value {temperature}
+        :thickness 2.5
+        :clockwise true
+        :width 22
+        :height 22
+        (label :class "circle-icon temperature-icon" :text "")
+      )
+      (label :class "temperature-text" :text "${temperature}°C")
+    )
+    
+    ;; CPU Content
+    (box :orientation "h" :class "cpu-container" :space-evenly false :spacing 7
+      (circular-progress
+        :class "circle"
+        :start-at 75
+        :value {cpu}
+        :thickness 2.5
+        :clockwise true
+        :width 22
+        :height 22
+        (label :class "circle-icon cpu-icon" :text "")
+      )
+      (label :class "cpu-text" :text "${cpu}%")
+    )
+
+    ;; Memory Content
+    (box :orientation "h" :class "memory-container" :space-evenly false :spacing 7
+      (circular-progress
+        :class "circle memory-icon"
+        :start-at 75
+        :value {round((memory.used_mem * 100) / memory.total_mem, 1)}
+        :thickness 2.5
+        :clockwise true
+        :width 22
+        :height 22
+        (label :class "circle-icon memory-icon" :text "󱧬")
+      )
+      (label :class "memory-text" :text " ${round(memory.used_mem / 1073741824.0, 1)}G")
+    )
+  )
+)
+
+(defwidget audio [pacman-update volume brightness]
+  (box 
+    :orientation "h" 
+    :class "audio-container" 
+    :halign "center"
+    :valign "center"
+    :space-evenly false
+    :spacing 15
+
+    ;; Update Content
+    (box :orientation "h" :class "update-container" :space-evenly false :spacing 7
+      (label :class "update-text" :text "${pacman-update.total_updates}")
+      (circular-progress
+        :class "circle update-icon"
+        :start-at 75
+        :value {pacman-update.percent}
+        :thickness 2.5
+        :clockwise true
+        :width 22
+        :height 22
+        (label :class "circle-icon update-icon" :text "")
+      )
+    )
+
+    ;; Brightness Content
+    (box :orientation "h" :class "brightness-container" :space-evenly false :spacing 7
+      (label :class "brightness-text" :text "${brightness.screen}%")
+      (circular-progress
+        :class "circle brightness-icon"
+        :start-at 75
+        :value {brightness.screen}
+        :thickness 2.5
+        :clockwise true
+        :width 22
+        :height 22
+        (label :class "circle-icon brightness-icon" :text "")
+      )
+    )
+
+    ;; Audio Output Content
+    (box :orientation "h" :class "sound-container" :space-evenly false :spacing 7
+      (label :class "sound-text  ${volume.audio_mute ? 'muted-text' : ''}" :text "${volume.audio}%")
+      (circular-progress
+        :class "circle ${volume.audio_mute ? 'muted-text' : ''}"
+        :start-at 75
+        :value {volume.audio}
+        :thickness 2.5
+        :clockwise true
+        :width 22
+        :height 22
+        (label :class "circle-icon sound-icon" :markup "${volume.audio_icon}")
+      )
+    )
+
+    ;; Mic Input Content
+    (box :orientation "h" :class "mic-container" :space-evenly false :spacing 7
+      (label :class "mic-text ${volume.mic_mute ? 'muted-text' : ''}" :text "${volume.mic}%")
+      (circular-progress
+        :class "circle ${volume.mic_mute ? 'muted-text' : ''}"
+        :start-at 75
+        :value {volume.mic}
+        :thickness 2.5
+        :clockwise true
+        :width 22
+        :height 22
+        (label :class "circle-icon mic-icon" :markup "${volume.mic_icon}")
+      )
+    )
+  )
+)
