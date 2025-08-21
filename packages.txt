@@ -1,5 +1,4 @@
 hyprland
-hyprpaper
 hyprpolkitagent
 hyprcursor
 hyprgraphics
@@ -18,6 +17,7 @@ qt6ct
 kvantum
 eww
 starship
+swww
 
 fish
 fontconfig
