@@ -17,6 +17,7 @@ foot
 qt6ct
 kvantum
 eww
+starship
 
 fish
 fontconfig

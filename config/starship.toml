@@ -1,0 +1,194 @@
+add_newline = false
+continuation_prompt = "[▸▹ ](dimmed white)"
+
+format = """
+[░▒▓](fg:#3F6375)\
+$os\
+$username\
+[ ](fg:#3F6375)\
+$directory\
+$git_branch\
+$git_status\
+$fill\
+$netns\
+\n$cmd_duration$sudo$character"""
+
+right_format = """
+$package\
+$nodejs\
+$php\
+$rust\
+$c\
+$cpp\
+$cmake\
+"""
+
+[fill]
+symbol = ' '
+
+[os]
+format = "[ $symbol]($style)"
+style = "bg:#3F6375 bold blue"
+disabled = false
+
+[username]
+format = '[$user]($style)'
+style_user = "bg:#3F6375 fg:#ECF2ED italic underline"
+style_root = ""
+show_always = true
+disabled = false
+
+[directory]
+format = '[on](bold blue)[$symbol $path]($style)[$read_only]($read_only_style)'
+style = "italic dimmed white"
+home_symbol = "󱂵 "
+truncation_symbol = "󰉋 "
+read_only = " 󰉐 "
+truncation_length = 3
+use_os_path_sep = true
+repo_root_style = 'italic bright-blue'
+repo_root_format = '[on](bold blue)[ $before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style)'
+
+[netns]
+format = '[$symbol $name]($style)'
+style = 'bold cyan'
+symbol = '󰖩 '
+
+[cmd_duration]
+format = "[ ◄ $duration ](italic white)"
+
+[sudo]
+format = "[ $symbol]($style)"
+style = 'bold purple'
+symbol = ''
+disabled = false
+
+[character]
+format = " $symbol "
+success_symbol = '[_\$](italic green)'
+error_symbol = '[_!](italic red)'
+vimcmd_symbol = "[_❯ ](italic dimmed green)"
+
+
+[git_branch]
+format = " — $symbol [$branch(:$remote_branch)]($style) "
+style = "italic bright-green"
+symbol = "[](bold italic bright-green)"
+truncation_symbol = "⋯"
+truncation_length = 11
+ignore_branches = []
+only_attached = true
+
+[git_metrics]
+format = '([▴$added]($added_style))([▿$deleted]($deleted_style))'
+added_style = 'italic dimmed green'
+deleted_style = 'italic dimmed red'
+ignore_submodules = true
+disabled = false
+
+[git_status]
+format = '[\[$ahead_behind$staged$modified$untracked$renamed$deleted$conflicted$stashed\]]($style)'
+style = "bold italic bright-blue"
+ahead = "[ (bold white)](italic green)"
+behind = "[ (bold white)│](italic red)"
+staged = "[ [$count](bold white)│](italic bright-cyan)"
+modified = "[ ](italic yellow)"
+untracked = "[󰍑 ](italic bright-yellow)"
+renamed = "[ ](italic bright-blue)"
+deleted = "[󰆴](italic red)"
+conflicted = "[ ](italic bright-magenta)"
+diverged = "[◇ ▴┤[${ahead_count}](regular white)│▿┤[${behind_count}](regular white)│](italic bright-magenta)"
+stashed = "[◃◈](italic white)"
+
+[package]
+format = "[pkg](italic dimmed) [$symbol$version]($style)"
+version_format = "v${raw}"
+symbol = "󰏗 "
+style = "dimmed yellow bold"
+display_private = true
+
+[nodejs]
+format = " [via](none) [node](italic bright-green) [ ($version(:$engines_version))](bold bright-green) "
+version_format = "v${raw}"
+detect_files = ["package-lock.json", "yarn.lock", "package.json"]
+detect_folders = ["node_modules"]
+detect_extensions = []
+
+[php]
+format = " [via](none) [php](italic dimmed purple) [ ($version)](bold dimmed purple) "
+version_format = "v${raw}"
+detect_files = ["composer.json"]
+detect_folders = ["node_modules"]
+detect_extensions = ["php"]
+
+[rust]
+format = " [via](none) [rust](italic $style) [ ($version)]($style) "
+version_format = "v${raw}"
+style = "bold red"
+detect_files = ["Cargo.toml"]
+detect_folders = []
+detect_extensions = ["rs"]
+
+[c]
+format = " [via](none) [c](italic $style) [ ($version(-$name))]($style) "
+version_format = "v${raw}"
+style = "bold 149"
+detect_files = []
+detect_folders = []
+detect_extensions = ["c", "h"]
+commands = [ [ 'cc', '--version' ], [ 'gcc', '--version' ], [ 'clang', '--version' ] ]
+
+[cpp]
+format = " [via](none) [cpp](italic $style) [ ($version(-$name))]($style) "
+version_format = "v${raw}"
+style = "bold 149"
+detect_files = []
+detect_folders = []
+detect_extensions = ['cpp', 'cc', 'cxx', 'c++', 'hpp', 'hh', 'hxx', 'h++', 'tcc']
+commands = [ [ 'c++', '--version' ], [ 'g++', '--version' ], [ 'clang++', '--version' ] ]
+
+[cmake]
+format = "[with](none) [CMake](italic $style) [ ($version)]($style) "
+version_format = "v${raw}"
+style = "bold dimmed red"
+detect_files = ['CMakeLists.txt', 'CMakeCache.txt']
+detect_folders = []
+detect_extensions = []
+
+
+
+
+[os.symbols]
+Alpine = "🏔️ "
+Arch = " "
+Artix = "🎗️ "
+CachyOS = "🎗️ "
+CentOS = "💠 "
+Debian = "🌀 "
+DragonFly = "🐉 "
+EndeavourOS = "🚀 "
+Fedora = "🎩 "
+FreeBSD = "😈 "
+Garuda = "🦅 "
+Gentoo = "🗜️ "
+Kali = "🐉 "
+Linux = "🐧 "
+Macos = "🍎 "
+Manjaro = "🥭 "
+Mint = "🌿 "
+NetBSD = "🚩 "
+NixOS = "❄️ "
+Nobara = "🎩 "
+OpenBSD = "🐡 "
+openSUSE = "🦎 "
+Pop = "🍭 "
+Raspbian = "🍓 "
+Redhat = "🎩 "
+RedHatEnterprise = "🎩 "
+Redox = "🧪 "
+Solus = "⛵ "
+SUSE = "🦎 "
+Ubuntu = "🎯 "
+Unknown = "❓ "
+Void = "  "
+Windows = "🪟 "
